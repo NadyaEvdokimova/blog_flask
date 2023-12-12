@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'header.html' %}
+        <!-- Page Header-->
+{% for n in range(length): %}
+    {% if posts[n]["id"] == num: %}
+        {% if posts[n]["id"] == 1: %}
+            <header class="masthead" style="background-image: url({{ url_for('static', filename='assets/img/cacti.jpg') }})">
+        {% elif posts[n]["id"] == 2: %}
+            <header class="masthead" style="background-image: url({{ url_for('static', filename='assets/img/relax.jpg') }})">
+        {% elif posts[n]["id"] == 3: %}
+            <header class="masthead" style="background-image: url({{ url_for('static', filename='assets/img/health.jpg') }})">
+        {% endif %}
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+
+                            <h1>{{ posts[n]["title"] }}</h1>
+                            <h2 class="subheading">{{ posts[n]["subtitle"] }}</h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="#!">Nadya Evdokimova</a>
+                                on December 12, 2023
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+{{ posts[n]["body"] }}
+                    </div>
+                </div>
+            </div>
+        </article>
+    {% endif %}
+{% endfor %}
+{% include 'footer.html' %}
+    </body>
+</html>
